@@ -42,6 +42,9 @@ class EmpresasController {
             linkedin,
             instagram,
             foto,
+            cidade,
+            estado,
+            pais,
         } = await Empresas.create(req.body);
 
         return res.json({
@@ -53,6 +56,9 @@ class EmpresasController {
             linkedin,
             instagram,
             foto,
+            cidade,
+            estado,
+            pais,
         });
     }
 
@@ -86,6 +92,9 @@ class EmpresasController {
             linkedin,
             instagram,
             foto,
+            cidade,
+            estado,
+            pais,
         } = await empresa.update(req.body);
 
         return res.json({
@@ -97,6 +106,9 @@ class EmpresasController {
             linkedin,
             instagram,
             foto,
+            cidade,
+            estado,
+            pais,
         });
     }
 

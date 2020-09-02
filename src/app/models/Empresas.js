@@ -7,13 +7,14 @@ class Empresas extends Model {
             {
                 nome: Sequelize.STRING,
                 email: Sequelize.STRING,
-                password: Sequelize.STRING,
                 telefone: Sequelize.STRING,
                 facebook: Sequelize.STRING,
                 linkedin: Sequelize.STRING,
                 instagram: Sequelize.STRING,
                 foto: Sequelize.STRING,
-                password_hash: Sequelize.VIRTUAL,
+                estado: Sequelize.STRING,
+                cidade: Sequelize.STRING,
+                pais: Sequelize.STRING,
             },
             {
                 sequelize,
@@ -21,18 +22,18 @@ class Empresas extends Model {
             }
         );
 
-        this.addHook('beforeSave', async (user) => {
-            if (user.password_hash) {
-                user.password = await bcrypt.hash(user.password_hash, 8);
-            }
-        });
+        // this.addHook('beforeSave', async (user) => {
+        //     if (user.password_hash) {
+        //         user.password = await bcrypt.hash(user.password_hash, 8);
+        //     }
+        // });
 
         return this;
     }
 
-    checkPassword(password_hash) {
-        return bcrypt.compare(password_hash, this.password);
-    }
+    // checkPassword(password_hash) {
+    //     return bcrypt.compare(password_hash, this.password);
+    // }
 }
 
 module.exports = Empresas;

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const Empresas = require('../models/Empresas');
+const Usuarios = require('../models/Usuarios');
 
 const authConfig = require('../../config/authConfig');
 
@@ -8,20 +8,20 @@ class SessionController {
         const { email, password } = req.body;
 
         // Verificando se existe
-        const empresa = await Empresas.findOne({ where: { email } });
-        if (!empresa) {
-            return res.status(401).json({ error: 'Empresa não cadastrada.' });
+        const usuario = await Usuarios.findOne({ where: { email } });
+        if (!usuario) {
+            return res.status(401).json({ error: 'Usuário não cadastrado.' });
         }
 
         // Verificar se a senha não bate
-        if (!(await empresa.checkPassword(password))) {
+        if (!(await usuario.checkPassword(password))) {
             return res.status(401).json({ error: 'Senha incorreta.' });
         }
 
-        const { id, nome } = empresa;
+        const { id, nome } = usuario;
 
         return res.json({
-            empresa: {
+            usuario: {
                 id,
                 nome,
                 email,

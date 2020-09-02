@@ -12,10 +12,6 @@ module.exports = {
                 unique: true,
                 allowNull: false,
             },
-            password: {
-                type: Sequelize.STRING,
-                allowNull: false,
-            },
             nome: {
                 type: Sequelize.STRING,
                 allowNull: false,
@@ -39,6 +35,18 @@ module.exports = {
             foto: {
                 type: Sequelize.STRING,
                 allowNull: true,
+            },
+            estado: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            cidade: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            pais: {
+                type: Sequelize.STRING,
+                allowNull: false,
             },
             created_at: {
                 type: Sequelize.DATE,
