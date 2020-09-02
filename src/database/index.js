@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const databaseConfig = require('../config/database');
+const Empresas = require('../app/models/Empresas');
+
 // Variável para receber todos os models
-const models = [];
+const models = [Empresas];
 
 class Database {
     constructor() {
@@ -13,10 +15,6 @@ class Database {
         this.connection = new Sequelize(databaseConfig);
 
         models.map((model) => model.init(this.connection));
-        // .map(
-        //     (model) =>
-        //         model.associate && model.associate(this.connection.models)
-        // );
     }
 }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { errors } = require('celebrate');
 const routes = require('./routes');
-// require('./database');
+require('./database');
 
 class App {
     constructor() {
