@@ -23,18 +23,6 @@ routes.post(
     SessionController.store
 );
 
-routes.use(auth);
-
-routes.get('/empresas', EmpresasController.index);
-routes.get(
-    '/empresas/id',
-    celebrate({
-        [Segments.HEADERS]: Joi.object({
-            empresa_id: Joi.number().integer().required(),
-        }).unknown(),
-    }),
-    EmpresasController.show
-);
 routes.post(
     '/empresas',
     celebrate({
@@ -51,6 +39,20 @@ routes.post(
     }),
     EmpresasController.store
 );
+
+routes.use(auth);
+
+routes.get('/empresas', EmpresasController.index);
+routes.get(
+    '/empresas/id',
+    celebrate({
+        [Segments.HEADERS]: Joi.object({
+            empresa_id: Joi.number().integer().required(),
+        }).unknown(),
+    }),
+    EmpresasController.show
+);
+
 routes.put(
     '/empresas/id',
     celebrate({
